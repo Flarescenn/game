@@ -70,7 +70,7 @@ document.getElementById("start").addEventListener("click", () => {
   }
 });
 
-document.getElementById("decrease").addEventListener("click", () => {
+/*document.getElementById("decrease").addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   document.getElementById("namechange").innerText = "Reverse Repo Rate";
  
@@ -99,6 +99,38 @@ function interestrate(x, y) {
         30,
         80
       );
+      move();
+    }, 100);
+  }
+}*/
+document.getElementById("decrease").addEventListener("click", () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  document.getElementById("namechange").innerText = "Reverse Repo Rate";
+ 
+  ctx.fillText(`Supplying Money ₹1000`, 125, 79);
+  reverseInterestRate(350, 100); 
+});
+
+function reverseInterestRate(x, y) {
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.stroke();
+  if (x > 50) {
+    setTimeout(function () {
+      ctx.lineTo(x - 10, y);
+      ctx.stroke();
+      x -= 10;
+      reverseInterestRate(x, y);
+    }, 100);
+  } else {
+    setTimeout(function () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); 
+      const reverseRepoRate = (document.getElementById("myRange").value / 100);
+      const initialAmount = 1000;
+      const interestAmount = reverseRepoRate * initialAmount;
+      const totalAmountReturned = initialAmount + interestAmount;
+
+      ctx.fillText(`Returning Money ₹${totalAmountReturned.toFixed(2)}`, 30, 80);
       move();
     }, 100);
   }
