@@ -91,7 +91,7 @@ function interestrate(x, y) {
     }, 100);
   } else {
     setTimeout(function () {
-      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas before starting the next animation
+      ctx.clearRect(0, 0, canvas.width, canvas.height); 
       ctx.fillText(
         `Sending Money ₹${
           1000 + (document.getElementById("myRange").value / 100) * 1000
@@ -99,6 +99,8 @@ function interestrate(x, y) {
         30,
         80
       );
+      ctx.beginPath();
+      ctx.moveTo(60, 100);
       move();
     }, 100);
   }
@@ -108,8 +110,7 @@ var   x=60
 function move() {
   
   
-  ctx.beginPath();
-  ctx.moveTo(60, 100);
+ 
  
  
   if (x < 360) {
