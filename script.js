@@ -124,6 +124,7 @@ function move() {
     }, 100);
   }else{
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    x=60;
   }
 }
 
